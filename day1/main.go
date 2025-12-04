@@ -78,19 +78,19 @@ func part2(input []string) int {
 
 func main() {
 
-	test_day_1_input, err := utils.ReadLines("sample.txt")
+	sample, err := utils.ReadLines("sample.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Test Part 1:", part1(test_day_1_input))
-	fmt.Println("Test Part 2:", part2(test_day_1_input))
+	fmt.Println("Test Part 1:", part1(sample))
+	fmt.Println("Test Part 2:", part2(sample))
 
-	day_1_input, err := utils.ReadLines("input.txt")
+	input, err := utils.ReadLines("input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Part 1:", part1(day_1_input))
-	fmt.Println("Part 2:", part2(day_1_input))
+	fmt.Println("Part 1:", part1(input))
+	fmt.Println("Part 2:", part2(input))
 }
