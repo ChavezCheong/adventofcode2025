@@ -7,6 +7,21 @@ import (
 	"strconv"
 )
 
+func maxKDigits(digits []int, k int) []int {
+	n := len(digits)
+	drop := n - k
+	var stack []int
+
+	for _, digit := range digits {
+		for drop > 0 && len(stack) > 0 && stack[len(stack)-1] < digit {
+			stack = stack[:len(stack)-1]
+			drop--
+		}
+		stack = append(stack, digit)
+	}
+	return stack[:k]
+}
+
 func convertToDigitList(n string) []int {
 	var digits []int
 	for _, r := range n {
@@ -24,46 +39,31 @@ func part1(input []string) int {
 
 	for _, bank := range input {
 		bank_digits := convertToDigitList(bank)
-		max_digit := -1
-		max_digit_index := -1
-		second_max_digit := -1
-
-		for i, digit := range bank_digits {
-			if digit > max_digit {
-				max_digit = digit
-				max_digit_index = i
-			}
-			if max_digit == 9 {
-				break
-			}
+		digit_list := maxKDigits(bank_digits, 2)
+		battery_charge := 0
+		for _, digit := range digit_list {
+			battery_charge = battery_charge*10 + digit
 		}
-
-		if max_digit_index != len(bank_digits)-1 {
-			for _, digit := range bank_digits[max_digit_index+1:] {
-				if digit > second_max_digit {
-					second_max_digit = digit
-				}
-			}
-		} else {
-			for _, digit := range bank_digits[:max_digit_index] {
-				if digit > second_max_digit {
-					second_max_digit = digit
-				}
-			}
-		}
-
-		if max_digit_index == len(bank_digits)-1 {
-			result += second_max_digit*10 + max_digit
-		} else {
-			result += max_digit*10 + second_max_digit
-		}
+		result += battery_charge
 	}
 
 	return result
 }
 
 func part2(input []string) int {
-	return 0
+	result := 0
+
+	for _, bank := range input {
+		bank_digits := convertToDigitList(bank)
+		digit_list := maxKDigits(bank_digits, 12)
+		battery_charge := 0
+		for _, digit := range digit_list {
+			battery_charge = battery_charge*10 + digit
+		}
+		result += battery_charge
+	}
+
+	return result
 }
 
 func main() {
