@@ -85,7 +85,13 @@ func part1(input []string) int {
 }
 
 func part2(input []string) int {
-	return 0
+	intervals, _ := convertToIntervalsAndPoints(input)
+	mergedIntervals := mergeAndSortIntervals(intervals)
+	result := 0
+	for _, interval := range mergedIntervals {
+		result += interval[1] - interval[0] + 1
+	}
+	return result
 }
 
 func main() {
