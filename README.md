@@ -17,8 +17,8 @@ Time to give AOC 2025 a good shot, and I wanted to try and experiment learning G
 |-----|--------|--------|
 | [1](./day1)   | ☑      | ☑      |
 | [2](./day2)   | ☑      | ☑      |
-| [3](./day3)   | ☐      | ☐      |
-| [4](./day4)   | ☐      | ☐      |
+| [3](./day3)   | ☑      | ☑      |
+| [4](./day4)   | ☑      | ☑      |
 | [5](./day5)   | ☐      | ☐      |
 | [6](./day6)   | ☐      | ☐      |
 | [7](./day7)   | ☐      | ☐      |

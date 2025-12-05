@@ -20,3 +20,17 @@ func ReadLines(filename string) ([]string, error) {
 	}
 	return strings.Split(content, "\n"), nil
 }
+
+func ReadToGraph(filename string) ([][]rune, error) {
+	lines, err := ReadLines(filename)
+	if err != nil {
+		return nil, err
+	}
+
+	graph := make([][]rune, len(lines))
+	for i, line := range lines {
+		graph[i] = []rune(line)
+	}
+
+	return graph, nil
+}
