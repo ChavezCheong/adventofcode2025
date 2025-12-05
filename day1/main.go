@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	"time"
 )
 
 func circular_add(current int, addition int, modulo int) int {
@@ -83,14 +84,24 @@ func main() {
 		log.Fatal(err)
 	}
 
+	start := time.Now()
 	fmt.Println("Test Part 1:", part1(sample))
+	fmt.Printf("Part 1 took %v\n", time.Since(start))
+
+	start = time.Now()
 	fmt.Println("Test Part 2:", part2(sample))
+	fmt.Printf("Part 2 took %v\n", time.Since(start))
 
 	input, err := utils.ReadLines("input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	start = time.Now()
 	fmt.Println("Part 1:", part1(input))
+	fmt.Printf("Part 1 took %v\n", time.Since(start))
+
+	start = time.Now()
 	fmt.Println("Part 2:", part2(input))
+	fmt.Printf("Part 2 took %v\n", time.Since(start))
 }
