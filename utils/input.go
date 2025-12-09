@@ -13,8 +13,24 @@ func ReadInput(filename string) (string, error) {
 	return strings.TrimSpace(string(data)), nil
 }
 
+func ReadInputWithSpaces(filename string) (string, error) {
+	data, err := os.ReadFile(filename)
+	if err != nil {
+		return "", err
+	}
+	return string(data), nil
+}
+
 func ReadLines(filename string) ([]string, error) {
 	content, err := ReadInput(filename)
+	if err != nil {
+		return nil, err
+	}
+	return strings.Split(content, "\n"), nil
+}
+
+func ReadLinesWithSpaces(filename string) ([]string, error) {
+	content, err := ReadInputWithSpaces(filename)
 	if err != nil {
 		return nil, err
 	}
